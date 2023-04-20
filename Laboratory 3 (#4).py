@@ -1,17 +1,22 @@
-import tkinter as tk
+from tkinter import *
+window = Tk()
+window.title("Button")
+window.geometry("350x150")
 
-def toggle_color():
-    if label["bg"] == "blue":
-        label.config(bg="yellow")
-    else:
-        label.config(bg="blue")
+class Color_Changer:
+    def __init__(self,win):
+        self.button1 = Button(win,text="Color", bg="Blue",fg="Red")
+        self.button1.place(x=50,y=100)
+        self.button2 = Button(win,text="<---Click to change the color of the button")
+        self.button2.place(x=100,y=100)
+        self.button2.bind('<Button-1>', self.change)
 
-root = tk.Tk()
-root.title("Button")
-label = tk.Label(root, text="Color",fg='red', bg="blue")
-label.pack(pady=50)
+    def change(self, event):
+        color = self.button1.cget("background")
+        if color == "blue":
+            self.button1.config(bg="yellow")
+        else:
+            self.button1.config(bg="blue")
 
-button = tk.Button(root, text="Click to change the color of the button", command=toggle_color)
-button.pack(pady=10)
-
-root.mainloop()
+mywin = Color_Changer(window)
+window.mainloop()
