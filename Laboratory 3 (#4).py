@@ -7,7 +7,7 @@ def toggle_color():
         label.config(bg="blue")
 
 root = tk.Tk()
-root.title("Main Window")
+root.title("Button")
 label = tk.Label(root, text="Color",fg='red', bg="blue")
 label.pack(pady=50)
 
