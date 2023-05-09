@@ -49,8 +49,10 @@ month.current()
 
 def choice(event):
     showinfo(
-            title = "Selection",
-            message = f'You selected{n.get()}')
+        title="Selection",
+        message="You selected " + n.get()
+    )
+
 
 month.bind("<<ComboboxSelected>>", choice)
 window.mainloop()
