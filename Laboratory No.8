@@ -1,0 +1,42 @@
+from tkinter import *
+
+class ListBoxTest :
+    def __init__(self) :
+        self.root = Tk()
+        self.list_box_1 = Listbox(self.root, selectmode=EXTENDED)
+        self.list_box_1.grid(row=1, column=1)
+
+        self.label = Label(self.root, text="Enter here:")
+        self.label.grid(row=2, column=0)
+
+        self.add_entry = Entry(self.root)
+        self.add_entry.grid(row=2, column=1)
+
+        self.add_button = Button(self.root, text="Add", command=self.AddItem)
+        self.add_button.grid(row=3, column=1)
+
+        self.delete_button = Button(self.root, text="Delete", command=self.DeleteSelection)
+        self.delete_button.grid(row=4, column=1)
+
+        self.list_box_1.insert(1,"C++")
+        self.list_box_1.insert(2,"Python")
+        self.list_box_1.insert(3,"HTML")
+        self.list_box_1.insert(4,"Java")
+
+        self.root.mainloop()
+
+    def DeleteSelection(self) :
+        items = self.list_box_1.curselection()
+        pos = 0
+        for i in items :
+            idx = int(i) - pos
+            self.list_box_1.delete(idx, idx)
+            pos = pos + 1
+
+    def AddItem(self):
+        item = self.add_entry.get()
+        if item != "":
+            self.list_box_1.insert(END, item)
+            self.add_entry.delete(0, END)
+
+lbt = ListBoxTest()
